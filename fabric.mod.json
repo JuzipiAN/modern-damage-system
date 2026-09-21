@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "criticalhits",
+  "version": "${version}",
+  "name": "现代化伤害系统",
+  "icon": {
+    "128": "assets/criticalhits/icon_128.png",
+    "256": "assets/criticalhits/icon_256.png",
+    "512": "assets/criticalhits/icon.png"
+  },
+  "description": "Modern Damage System - 现代化伤害系统：移除跳劈必暴击，引入完整的伤害乘区系统。\n\n【攻击附魔】暴击、暴击伤害、伤害加成、护甲穿透、生命吸取、易伤、真实伤害、溅射伤害、处决、冰霜、剧毒、破甲、攻速、攻击范围、额外伤害\n【防御附魔】暴击减免、伤害减免、护甲防御、生命强化、移速、反伤、护盾、击退抗性\n【支持正负等级】攻速、移速、攻击范围支持正/负等级附魔\n【药水】冰霜药水、剧毒药水、破甲药水、易伤药水（普通/喷溅/滞留/药水箭）\n【其他功能】MDS合成台、材料合成、敌对生物适配、HUD状态提示、可配置战利品系统、盾牌减伤、预设附魔书\n\n必选前置：Fabric API、Better Combat、AttributeFix、MaxHealth Fix、Cloth Config API、Configured、MDS API。\n\n🔗 Modrinth：https://modrinth.com/mod/modern-damage-system\n📦 源码：https://github.com/JuzipiAN/modern-damage-system\n✉️ 联系：ngdgsls151231@outlook.com\n\n⚠️ 许可证：自定义源代码公开协议（Custom Source-available License），禁止未经书面授权移植、修改、分发至网易中国版我的世界，详见LICENSE文件。",
+  "authors": [
+    "Juzipi_AN"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/modern-damage-system",
+    "issues": "https://modrinth.com/mod/modern-damage-system/issues",
+    "source": "https://github.com/JuzipiAN/modern-damage-system",
+    "email": "ngdgsls151231@outlook.com"
+  },
+  "license": "Custom Source-available License (All Rights Reserved)",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.juzipi.criticalhits.CriticalHitsMod"
+    ],
+    "client": [
+      "com.juzipi.criticalhits.CriticalHitsClient"
+    ]
+  },
+  "mixins": [
+    "criticalhits.mixins.json",
+    "criticalhits.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*",
+    "bettercombat": "*",
+    "cloth-config": "*",
+    "configured": "*",
+    "attributefix": "*",
+    "maxhealthfix": "*",
+    "mds-api": ">=1.0.0"
+  }
+}
