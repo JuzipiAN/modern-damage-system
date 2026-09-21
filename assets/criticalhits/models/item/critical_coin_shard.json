@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "criticalhits:item/critical_coin_shard"
+  }
+}

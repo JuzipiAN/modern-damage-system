@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "criticalhits:block/critical_station" }
+  }
+}
