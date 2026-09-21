@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": "criticalhits:critical_coin",
+    "B": "minecraft:gold_block",
+    "C": "minecraft:redstone_block"
+  },
+  "result": {
+    "id": "criticalhits:critical_station"
+  }
+}

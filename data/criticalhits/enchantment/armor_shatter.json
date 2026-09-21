@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 3,
+  "description": {
+    "translate": "enchantment.criticalhits.armor_shatter"
+  },
+  "effects": {},
+  "max_cost": {
+    "base": 36,
+    "per_level_above_first": 6
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 26,
+    "per_level_above_first": 6
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#criticalhits:empty",
+  "weight": 1
+}

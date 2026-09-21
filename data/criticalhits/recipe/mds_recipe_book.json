@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "criticalhits:critical_coin_shard"
+  ],
+  "result": {
+    "id": "criticalhits:mds_recipe_book"
+  }
+}

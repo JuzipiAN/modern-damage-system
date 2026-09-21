@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:spider_eye",
+    "S": "criticalhits:critical_coin_shard"
+  },
+  "result": {
+    "id": "criticalhits:critical_coin"
+  }
+}

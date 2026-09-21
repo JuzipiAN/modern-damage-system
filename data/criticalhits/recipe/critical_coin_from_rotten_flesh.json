@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#S#",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:rotten_flesh",
+    "S": "criticalhits:critical_coin_shard"
+  },
+  "result": {
+    "id": "criticalhits:critical_coin"
+  }
+}
