@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:max_critical",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_forty_meter_blade"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.forty_meter_blade.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.forty_meter_blade.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

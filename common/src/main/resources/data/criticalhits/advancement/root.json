@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_root"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.root.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "criticalhits:gui/advancements/backgrounds/mds"
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

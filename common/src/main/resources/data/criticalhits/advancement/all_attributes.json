@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:attack_speed",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_all_attributes"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.all_attributes.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.all_attributes.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

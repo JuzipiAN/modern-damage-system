@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:root",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_ultimate_master"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.ultimate_master.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.ultimate_master.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

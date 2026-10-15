@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:unkillable",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_reflect_kill"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.reflect_kill.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.reflect_kill.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

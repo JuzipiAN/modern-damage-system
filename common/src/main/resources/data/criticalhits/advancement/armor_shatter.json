@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:root",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_armor_shatter"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.armor_shatter.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.armor_shatter.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

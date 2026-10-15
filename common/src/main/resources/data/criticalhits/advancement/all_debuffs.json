@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:frost",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_all_debuffs"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.all_debuffs.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.all_debuffs.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

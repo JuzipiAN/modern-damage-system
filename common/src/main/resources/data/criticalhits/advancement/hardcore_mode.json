@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:rich",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_hardcore_mode"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.hardcore_mode.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.hardcore_mode.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:shield_enchant",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_unkillable"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.unkillable.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.unkillable.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

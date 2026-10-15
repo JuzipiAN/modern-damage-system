@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:all_debuffs",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_quadruple_torment"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.quadruple_torment.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.quadruple_torment.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

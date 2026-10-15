@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:max_critical",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_damage_master"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.damage_master.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.damage_master.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

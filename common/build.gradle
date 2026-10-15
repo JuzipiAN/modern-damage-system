@@ -1,0 +1,2 @@
+// Common module: shared source code, compiled by each platform module
+// This module does not produce a jar directly

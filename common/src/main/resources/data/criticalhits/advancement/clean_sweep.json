@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:splash_master",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_clean_sweep"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.clean_sweep.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.clean_sweep.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

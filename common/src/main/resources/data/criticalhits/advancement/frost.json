@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:root",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_frost"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.frost.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.frost.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

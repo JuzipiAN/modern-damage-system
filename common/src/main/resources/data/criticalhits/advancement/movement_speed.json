@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:root",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_movement_speed"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.movement_speed.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.movement_speed.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

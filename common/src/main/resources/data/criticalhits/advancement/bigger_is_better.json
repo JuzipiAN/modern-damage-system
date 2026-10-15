@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:root",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_bigger_is_better"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.bigger_is_better.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.bigger_is_better.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

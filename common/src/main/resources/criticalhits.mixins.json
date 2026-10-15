@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "com.juzipi.criticalhits.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AbstractContainerMenuMixin",
+    "PlayerEntityAttackMixin",
+    "AnvilScreenHandlerMixin",
+    "CraftingMenuMixin",
+    "PlayerMaxHealthMixin",
+    "EntityHurtMixin",
+    "MobSpawnMixin",
+    "PotionBrewingMixin",
+    "AttributeModifierMixin",
+    "LivingEntityTickMixin",
+    "ResultSlotMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

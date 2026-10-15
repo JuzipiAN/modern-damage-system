@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:hardcore_mode",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_tuner"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.tuner.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.tuner.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}

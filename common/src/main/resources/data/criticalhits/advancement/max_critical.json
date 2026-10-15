@@ -1,0 +1,28 @@
+{
+  "parent": "criticalhits:first_critical_book",
+  "display": {
+    "icon": {
+      "id": "criticalhits:adv_icon_max_critical"
+    },
+    "title": {
+      "translate": "advancement.criticalhits.max_critical.title"
+    },
+    "description": {
+      "translate": "advancement.criticalhits.max_critical.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "trigger"
+    ]
+  ]
+}
