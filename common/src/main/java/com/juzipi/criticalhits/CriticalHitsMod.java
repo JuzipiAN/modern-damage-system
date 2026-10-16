@@ -21,8 +21,8 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.UniformGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -385,7 +385,7 @@ public class CriticalHitsMod {
         // 加载配置
         CriticalHitsConfig.load();
 
-        // 注册Cloth Config配置（由Configured自动生成配置界面）
+        // 注册Cloth Config配置（配置界面由模组自带的 MdsConfigGui 提供，不依赖 Configured）
         try {
             me.shedaniel.autoconfig.AutoConfig.register(MdsClothConfig.class,
                 me.shedaniel.autoconfig.serializer.GsonConfigSerializer::new);
@@ -1143,7 +1143,7 @@ public class CriticalHitsMod {
         LootPool.Builder pool = LootPool.lootPool();
         int maxCount = CriticalHitsConfig.get().loot_enchantment_max_count;
         // 至少1次roll，避免箱子完全为空
-        pool.setRolls(UniformGenerator.between(1, maxCount));
+        pool.setRolls(net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders.between(1, maxCount));
 
         boolean addedAny = false;
 
@@ -1173,7 +1173,7 @@ public class CriticalHitsMod {
                 pool.add(LootItem.lootTableItem(Items.ENCHANTED_BOOK)
                     .setWeight(weight)
                     .apply(new SetEnchantmentsFunction.Builder(false)
-                        .withEnchantment(holder, ConstantValue.exactly(level))));
+                        .withEnchantment(holder, net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders.exactly(level))));
                 addedAny = true;
             }
         }
@@ -1190,7 +1190,7 @@ public class CriticalHitsMod {
         LootPool.Builder pool = LootPool.lootPool();
         int maxCount = CriticalHitsConfig.get().coin_shard_max_count;
         // 至少1次roll，避免箱子完全为空
-        pool.setRolls(UniformGenerator.between(1, maxCount));
+        pool.setRolls(net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders.between(1, maxCount));
         pool.add(LootItem.lootTableItem(CRITICAL_COIN_SHARD)
             .setWeight(CriticalHitsConfig.get().coin_shard_weight));
         tableBuilder.withPool(pool);
@@ -1306,7 +1306,7 @@ public class CriticalHitsMod {
 
     private static void injectCriticalBooksStatic(LootTable.Builder tableBuilder, net.minecraft.core.HolderLookup.Provider registries) {
         LootPool.Builder pool = LootPool.lootPool();
-        pool.setRolls(UniformGenerator.between(1, CriticalHitsConfig.get().loot_enchantment_max_count));
+        pool.setRolls(net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders.between(1, CriticalHitsConfig.get().loot_enchantment_max_count));
         boolean addedAny = false;
         for (var entry : CriticalHitsConfig.get().loot_enchantments.entrySet()) {
             if (!entry.getValue().enabled) continue;
@@ -1319,7 +1319,7 @@ public class CriticalHitsMod {
             for (int level = 1; level <= maxLevel; level++) {
                 int weight = (level - 1 < weights.length) ? weights[level - 1] : 1;
                 pool.add(LootItem.lootTableItem(Items.ENCHANTED_BOOK).setWeight(weight)
-                    .apply(new SetEnchantmentsFunction.Builder(false).withEnchantment(holder, ConstantValue.exactly(level))));
+                    .apply(new SetEnchantmentsFunction.Builder(false).withEnchantment(holder, net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders.exactly(level))));
                 addedAny = true;
             }
         }
@@ -1328,7 +1328,7 @@ public class CriticalHitsMod {
 
     private static void injectCoinShardsStatic(LootTable.Builder tableBuilder) {
         LootPool.Builder pool = LootPool.lootPool();
-        pool.setRolls(UniformGenerator.between(1, CriticalHitsConfig.get().coin_shard_max_count));
+        pool.setRolls(net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders.between(1, CriticalHitsConfig.get().coin_shard_max_count));
         pool.add(LootItem.lootTableItem(CRITICAL_COIN_SHARD).setWeight(CriticalHitsConfig.get().coin_shard_weight));
         tableBuilder.withPool(pool);
     }

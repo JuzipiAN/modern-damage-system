@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:potion",
+    "potion_contents": {
+      "potions": "criticalhits:frost_3"
+    }
+  },
+  "output": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "criticalhits:frost_3"
+      }
+    },
+    "id": "minecraft:splash_potion"
+  },
+  "reagent": {
+    "item": "minecraft:gunpowder"
+  }
+}

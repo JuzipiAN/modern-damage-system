@@ -87,7 +87,8 @@ public class MouseHandlerMixin {
     }
 
     @Inject(method = "onMove", at = @At("TAIL"))
-    private void onMove(long window, double xpos, double ypos, CallbackInfo ci) {
+    // 26.3：MouseHandler.onMove 多了两个参数（累计位移 dx/dy）
+    private void onMove(long window, double xpos, double ypos, double dx, double dy, CallbackInfo ci) {
         if (!HudEditor.isEditMode() || !HudEditor.isDragging()) return;
         Minecraft mc = Minecraft.getInstance();
         if (mc == null || mc.getWindow() == null) return;

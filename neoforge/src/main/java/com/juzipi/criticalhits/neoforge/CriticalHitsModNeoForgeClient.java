@@ -40,7 +40,8 @@ public class CriticalHitsModNeoForgeClient {
     private static final Identifier HUD_LAYER_ID =
         Identifier.fromNamespaceAndPath(CriticalHitsMod.MOD_ID, "hud");
 
-    public CriticalHitsModNeoForgeClient(IEventBus modEventBus) {
+    public CriticalHitsModNeoForgeClient(IEventBus modEventBus,
+                                        net.neoforged.fml.ModContainer modContainer) {
         // mod 总线
         modEventBus.addListener(this::onRegisterMenuScreens);
         modEventBus.addListener(this::onRegisterKeyMappings);
@@ -53,14 +54,53 @@ public class CriticalHitsModNeoForgeClient {
         NeoForge.EVENT_BUS.addListener(this::onMouseButton);
         NeoForge.EVENT_BUS.addListener(this::onMouseScroll);
 
+        // 模组列表里的 Config 按钮：NeoForge 自带的配置界面扩展点，
+        // 玩家不需要再依赖 Configured 就能打开 MDS 配置。
+        try {
+            modContainer.registerExtensionPoint(
+                net.neoforged.neoforge.client.gui.IConfigScreenFactory.class,
+                (container, parent) -> com.juzipi.criticalhits.MdsConfigGui.create(parent));
+            CriticalHitsMod.LOGGER.info("[MDS] 已注册 NeoForge 配置界面入口");
+        } catch (Throwable e) {
+            CriticalHitsMod.LOGGER.warn("[MDS] 注册配置界面入口失败（不影响游戏）", e);
+        }
+
         CriticalHitsMod.LOGGER.info("[MDS] NeoForge 客户端入口初始化完成");
     }
 
     /** 界面注册（旧版缺失 → 打开界面必崩）。 */
     private void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
-        event.register(CriticalHitsMod.stationMenu(), CriticalStationScreen::new);
-        event.register(CriticalHitsMod.recipeBookMenu(), RecipeBookScreen::new);
-        CriticalHitsMod.LOGGER.info("[Modern Damage System] 暴击台/配方书界面注册成功 (NeoForge)");
+        // 26.3：MenuScreens.ScreenConstructor 变成包内私有，模组无法直接引用该类型，
+        // 因此用动态代理 + 反射调用 register，绕开编译期的访问检查。
+        registerScreen(event, CriticalHitsMod.stationMenu(), CriticalStationScreen.class);
+        registerScreen(event, CriticalHitsMod.recipeBookMenu(), RecipeBookScreen.class);
+        CriticalHitsMod.LOGGER.info("[Modern Damage System] 暴击台/配方书界面注册成功 (NeoForge, 反射方式)");
+    }
+
+    /** 用动态代理实现不可访问的 ScreenConstructor 接口，再反射调用 event.register。 */
+    private void registerScreen(RegisterMenuScreensEvent event,
+                                net.minecraft.world.inventory.MenuType<?> menuType,
+                                final Class<?> screenClass) {
+        try {
+            Class<?> sc = Class.forName("net.minecraft.client.gui.screens.MenuScreens$ScreenConstructor");
+            Object proxy = java.lang.reflect.Proxy.newProxyInstance(
+                screenClass.getClassLoader(), new Class<?>[]{sc},
+                (p, method, args) -> {
+                    if ("create".equals(method.getName()) && args != null && args.length == 3) {
+                        return screenClass.getConstructor(
+                                net.minecraft.world.inventory.AbstractContainerMenu.class,
+                                net.minecraft.world.entity.player.Inventory.class,
+                                net.minecraft.network.chat.Component.class)
+                            .newInstance(args[0], args[1], args[2]);
+                    }
+                    return null;
+                });
+            java.lang.reflect.Method reg = event.getClass().getMethod(
+                "register", net.minecraft.world.inventory.MenuType.class, sc);
+            reg.invoke(event, menuType, proxy);
+        } catch (Throwable e) {
+            CriticalHitsMod.LOGGER.error("[Modern Damage System] 注册界面失败: " + screenClass.getSimpleName(), e);
+        }
     }
 
     /** 按键绑定 + HUD 编辑器。 */

@@ -349,7 +349,7 @@ public final class MdsAdvancements {
             int times = (coins + 63) / 64;
             for (int i = 0; i < times; i++) {
                 ItemStack s = new ItemStack(CriticalHitsMod.coinItem(), Math.min(64, coins - i * 64));
-                if (!p.getInventory().add(s)) p.drop(s, false);
+                if (!p.getInventory().add(s)) p.drop(s, false, net.minecraft.util.Prediction.SERVER_ONLY);
             }
         }
         p.sendSystemMessage(Component.literal("§6[MDS] 成就奖励已发放"));

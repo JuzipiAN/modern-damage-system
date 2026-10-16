@@ -19,8 +19,8 @@ import java.util.List;
 @Mixin(ItemStack.class)
 public abstract class ItemStackTooltipMixin {
 
-    @Inject(method = "getTooltip", at = @At("RETURN"), cancellable = true)
-    private void criticalhits$removeEnchantmentDescriptions(Object context, TooltipFlag flag, CallbackInfoReturnable<List<Component>> cir) {
+    @Inject(method = "getTooltipLines", at = @At("RETURN"), cancellable = true)
+    private void criticalhits$removeEnchantmentDescriptions(net.minecraft.world.item.Item.TooltipContext context, net.minecraft.world.entity.player.Player player, TooltipFlag flag, CallbackInfoReturnable<List<Component>> cir) {
         List<Component> original = cir.getReturnValue();
         if (original == null || original.isEmpty()) return;
 

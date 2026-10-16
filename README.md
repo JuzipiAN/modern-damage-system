@@ -1,6 +1,6 @@
 # Modern Damage System
 
-A combat overhaul for Minecraft 26.2, built for both Fabric and NeoForge.
+A combat overhaul for Minecraft 26.3, built for both Fabric and NeoForge.
 
 MDS adds 26 damage enchantments, a station that upgrades enchantment books, a combat HUD you can
 rearrange, an in-game config for loot and scaling, and 40 achievements.
@@ -68,8 +68,8 @@ by default, and an operator can enable them with `/mds rewards true`.
 | | |
 |---|---|
 | Minecraft | 26.2 |
-| Fabric | Loader 0.19.3+ and Fabric API 0.158.0+26.2 |
-| NeoForge | 26.2.0.88+ |
+| Fabric | Loader 0.19.5+ and Fabric API 0.161.0+26.3 |
+| NeoForge | 26.3.0.83+ |
 | Java | 25 |
 
 Install the jar that matches your loader. The two are alternatives, not companions.
@@ -129,7 +129,7 @@ it off as your own. See [LICENSE](LICENSE) for the full text.
 
 ## 中文说明
 
-面向 Minecraft 26.2 的战斗改造模组，Fabric 和 NeoForge 都能用。
+面向 Minecraft 26.3 的战斗改造模组，Fabric 和 NeoForge 都能用。
 
 里面包含 26 个伤害附魔、一台升级附魔书的合成台、可以自由摆放的战斗面板、管战利品和数值的配置界面，
 以及 40 个成就。
@@ -193,9 +193,9 @@ it off as your own. See [LICENSE](LICENSE) for the full text.
 
 | | |
 |---|---|
-| 游戏 | Minecraft 26.2 |
-| Fabric | Loader 0.19.3+ 以及 Fabric API 0.158.0+26.2 |
-| NeoForge | 26.2.0.88+ |
+| 游戏 | Minecraft 26.3 |
+| Fabric | Loader 0.19.5+ 以及 Fabric API 0.161.0+26.3 |
+| NeoForge | 26.3.0.83+ |
 | Java | 25 |
 
 装与你加载器对应的那一个 jar 就行，两个是二选一的关系。

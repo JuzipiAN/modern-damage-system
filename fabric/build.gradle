@@ -12,7 +12,7 @@ version = project.mod_version
 group = project.mod_group
 
 base {
-    archivesName = "modern-damage-system-fabric-26.2"
+    archivesName = "modern-damage-system-fabric-26.3"
 }
 
 repositories {
@@ -43,11 +43,16 @@ sourceSets {
 }
 
 dependencies {
+    // Mod Menu（可选依赖，仅编译期）
+    compileOnly fileTree(dir: 'C:/Users/Default/AppData/Roaming/.minecraft/versions/26.3-Fabric 0.19.5/mods', include: ['*modmenu*.jar'])
+    // 26.3：LWJGL 编译依赖改为按目录匹配，避免写死版本号
+    compileOnly fileTree(dir: "C:/Users/Default/AppData/Roaming/.minecraft/libraries/org/lwjgl",
+        include: ["**/lwjgl-*.jar", "**/lwjgl-glfw-*.jar", "**/lwjgl-opengl-*.jar", "**/lwjgl-stb-*.jar"])
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     implementation files("${gradle.gradleUserHomeDir}/caches/fabric-loom/${project.minecraft_version}/minecraft-merged.jar")
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    compileOnly files("C:/Users/Default/AppData/Roaming/.minecraft/versions/26.2-Fabric 0.19.3/mods/cloth-config-26.2.155.jar")
+    compileOnly files("C:/Users/Default/AppData/Roaming/.minecraft/versions/26.3-Fabric 0.19.5/mods/cloth-config-26.3.158.jar")
 }
 
 processResources {
@@ -55,7 +60,8 @@ processResources {
     filteringCharset = "UTF-8"
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        // 26.3：不用 expand（Groovy 模板会把 JSON 里的 \n 转义变成真换行 -> 非法 JSON）
+        filter { line -> line.replace('${version}', project.version.toString()) }
     }
 }
 

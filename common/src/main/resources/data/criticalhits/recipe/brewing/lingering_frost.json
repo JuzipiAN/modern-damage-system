@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:potion",
+    "potion_contents": {
+      "potions": "criticalhits:frost"
+    }
+  },
+  "output": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "criticalhits:frost"
+      }
+    },
+    "id": "minecraft:lingering_potion"
+  },
+  "reagent": {
+    "item": "minecraft:dragon_breath"
+  }
+}

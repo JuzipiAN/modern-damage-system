@@ -2,25 +2,16 @@ modLoader="javafml"
 loaderVersion="[11,)"
 license="Custom Source-available License (All Rights Reserved)"
 # 下面两个链接会显示在 NeoForge 模组列表界面，可点击打开
-displayURL="https://modrinth.com/mod/modern-damage-system"
 issueTrackerURL="https://github.com/JuzipiAN/modern-damage-system/issues"
 
 [[mods]]
 modId="criticalhits"
 version="${version}"
-displayName="Modern Damage System"
+displayName="现代化伤害系统丨Modern Damage System"
 authors="Juzipi_AN"
 logoFile="assets/criticalhits/icon_256.png"
-displayURL="https://modrinth.com/mod/modern-damage-system"
-description='''
-现代化伤害系统：把原版战斗重做成「伤害乘区」体系 —— 26 种攻击/防御附魔、4 系药水、可配置战利品、MDS 合成台与 HUD 状态提示，并移除跳劈必暴击。
-
-Modern Damage System rebuilds combat around a damage-multiplier system: 26 attack/defense enchantments, 4 potion lines, configurable loot, a dedicated MDS crafting station and an on-screen HUD.
-
-必选前置 / Requires：NeoForge、Better Combat、AttributeFix、MaxHealth Fix、Cloth Config API、MDS API。
-
-⚠️ 许可证 / License：自定义源代码公开协议（Custom Source-available License, All Rights Reserved）—— 禁止未经书面授权移植、修改、分发至网易中国版我的世界。
-'''
+displayURL="https://www.curseforge.com/minecraft/mc-mods/modern-damage-system"
+description="现代化伤害系统：把原版战斗重做成「伤害乘区」体系。26 种攻击与防御附魔、MDS 合成台、可配置战斗面板、40 个成就，以及敌对生物的附魔适配；移除跳劈必暴击。\n\nModern Damage System rebuilds combat around a damage-multiplier system: 26 attack and defense enchantments, an MDS crafting station, a configurable combat HUD, 40 achievements and enchanted hostile mobs. The jump-crit rule is gone.\n\n必选前置 / Requires: NeoForge, Better Combat, AttributeFix, MaxHealth Fix, Cloth Config API, MDS API.\n\n许可证 / License: 自定义源代码公开协议 (Custom Source-available License, All Rights Reserved) —— 禁止未经书面授权移植、修改、分发至网易中国版我的世界。\n\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/modern-damage-system  |  Source: https://github.com/JuzipiAN/modern-damage-system"
 
 # Mixin 配置必须显式列出：FML 11 的 ModFileParser.getMixinConfigs 只读取这里的声明，
 # 不会自动扫描 jar 里的 *.mixins.json。缺了这段，NeoForge 端所有 Mixin 都不会加载
@@ -34,7 +25,7 @@ config = "criticalhits.client.mixins.json"
 [[dependencies.criticalhits]]
 modId="neoforge"
 type="required"
-versionRange="[26.2,)"
+versionRange="[26.3,)"
 ordering="NONE"
 side="BOTH"
 

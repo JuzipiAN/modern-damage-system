@@ -1,13 +1,12 @@
 plugins {
     id 'java'
-    id 'net.neoforged.moddev' version '2.0.143'
 }
 
 version = project.mod_version
 group = project.mod_group
 
 base {
-    archivesName = 'modern-damage-system-neoforge-26.2'
+    archivesName = 'modern-damage-system-neoforge-26.3'
 }
 
 java {
@@ -15,80 +14,75 @@ java {
     withSourcesJar()
 }
 
-repositories {
-    mavenCentral()
-    maven { url = "https://maven.shedaniel.me/" }
-    maven { url = "https://maven.terraformersmc.com/releases/" }
-    maven { url = "https://maven.neoforged.net/releases" }
-}
+// ===== Plan B：不使用 moddev 插件（maven.neoforged.net 本机连不上），
+//       直接把实例里已装好的 NeoForge 与各前置 jar 加进编译 classpath =====
+def MCDIR = 'C:/Users/Default/AppData/Roaming/.minecraft'
+def INST  = MCDIR + '/versions/26.3-NeoForge_26.3.0.83'
 
-// 设置资源重复处理策略 + 版本号注入（neoforge.mods.toml 里用 ${version}）
-tasks.named('processResources') {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    inputs.property "version", project.version
-    filesMatching("META-INF/neoforge.mods.toml") {
-        expand "version": project.version
-    }
-}
-
-// 专用服务端不需要客户端资源文件。
-// moddev 的 downloadAssets 会拉取大量客户端资源，跑 runServer 时可用 -PskipAssets 跳过。
-if (project.hasProperty('skipAssets')) {
-    tasks.matching { it.name == 'downloadAssets' }.configureEach { enabled = false }
-}
-
-// 引用 common 模块的源码和资源
 sourceSets {
     main {
         java {
-            srcDirs += [
-                project(':common').file('src/main/java'),
-                'src/main/java'
-            ]
-            // 只排除 Fabric 平台专属的客户端入口类。
-            // 注意：com/juzipi/criticalhits/client/** 与 MdsClientHooks/MdsClientScreens
-            // 现在都在 common 里，NeoForge 客户端入口要复用，不能再排除。
-            exclude 'com/juzipi/criticalhits/CriticalHitsClient.java'
+            srcDirs += [project(':common').file('src/main/java'), 'src/main/java']
         }
         resources {
-            srcDirs += [
-                project(':common').file('src/main/resources'),
-                'src/main/resources'
-            ]
+            srcDirs += [project(':common').file('src/main/resources'), 'src/main/resources']
         }
     }
 }
 
-neoForge {
-    version = "26.2.0.85"
-
-    runs {
-        client {
-            client()
-        }
-        server {
-            server()
-        }
-    }
-
-    mods {
-        criticalhits {
-            sourceSet sourceSets.main
-        }
-    }
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    implementation "me.shedaniel.cloth:cloth-config-neoforge:26.2.155"
-    compileOnly files("C:/Users/Administrator/Doubao/chats/2026-09-03/new-chat-2/mds-api-neoforge/build/libs/mds-api-neoforge-26.2-1.1.0.jar")
+    // NeoForge 打补丁后的 MC（40MB，含 NeoForge 本体）
+    implementation files(INST + '/26.3-NeoForge_26.3.0.83.jar')
+    // 实例 libraries 里的全部依赖（含 mixin / asm / gson / netty / lwjgl 等）
+    implementation fileTree(dir: MCDIR + '/libraries', include: ['**/*.jar'])
+    // 各前置模组（直接取实例 mods 里的）
+    implementation files(
+        INST + '/mods/bettercombat-neoforge-3.2.2+26.3.jar',
+        INST + '/mods/cloth-config-neoforge-26.3.159.jar',
+        INST + '/mods/MaxHealthFix-neoforge-MC26.3-26.3.0.1.jar',
+        INST + '/mods/[属性修复] AttributeFix-neoforge-MC26.3-26.3.0.1.jar'
+    )
 }
 
-tasks.withType(Jar).configureEach {
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-nowarn']
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filteringCharset = 'UTF-8'
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    filesMatching('META-INF/neoforge.mods.toml') {
+        filter { line -> line.replace('${version}', project.version.toString()) }
+    }
 }
 
 jar {
-    exclude("com/juzipi/criticalhits/api/**")
-    exclude("assets/criticalhits/textures/item/mds_api_icon.png")
-    exclude("assets/criticalhits/textures/entity/**")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    // 与原始构建一致：主模组不打包 API 专属资源
+    exclude('com/juzipi/criticalhits/api/**')
+    exclude('assets/criticalhits/textures/item/mds_api_icon.png')
+    exclude('assets/criticalhits/textures/entity/**')
+    manifest {
+        attributes([
+            'Specification-Title'     : 'criticalhits',
+            'Specification-Vendor'    : 'Juzipi_AN',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.version,
+            'Implementation-Vendor'   : 'Juzipi_AN'
+        ])
+    }
+}
+
+
+// sourcesJar 里 common 与 neoforge 的源目录有重名文件，需要去重策略
+tasks.named('sourcesJar') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

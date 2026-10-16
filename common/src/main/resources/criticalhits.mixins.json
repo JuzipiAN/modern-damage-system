@@ -10,7 +10,6 @@
     "PlayerMaxHealthMixin",
     "EntityHurtMixin",
     "MobSpawnMixin",
-    "PotionBrewingMixin",
     "AttributeModifierMixin",
     "LivingEntityTickMixin",
     "ResultSlotMixin"

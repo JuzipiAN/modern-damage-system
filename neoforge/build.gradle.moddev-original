@@ -1,0 +1,94 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.143'
+}
+
+version = project.mod_version
+group = project.mod_group
+
+base {
+    archivesName = 'modern-damage-system-neoforge-26.3'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+}
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.terraformersmc.com/releases/" }
+    maven { url = "https://maven.neoforged.net/releases" }
+}
+
+// 设置资源重复处理策略 + 版本号注入（neoforge.mods.toml 里用 ${version}）
+tasks.named('processResources') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    inputs.property "version", project.version
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand "version": project.version
+    }
+}
+
+// 专用服务端不需要客户端资源文件。
+// moddev 的 downloadAssets 会拉取大量客户端资源，跑 runServer 时可用 -PskipAssets 跳过。
+if (project.hasProperty('skipAssets')) {
+    tasks.matching { it.name == 'downloadAssets' }.configureEach { enabled = false }
+}
+
+// 引用 common 模块的源码和资源
+sourceSets {
+    main {
+        java {
+            srcDirs += [
+                project(':common').file('src/main/java'),
+                'src/main/java'
+            ]
+            // 只排除 Fabric 平台专属的客户端入口类。
+            // 注意：com/juzipi/criticalhits/client/** 与 MdsClientHooks/MdsClientScreens
+            // 现在都在 common 里，NeoForge 客户端入口要复用，不能再排除。
+            exclude 'com/juzipi/criticalhits/CriticalHitsClient.java'
+        }
+        resources {
+            srcDirs += [
+                project(':common').file('src/main/resources'),
+                'src/main/resources'
+            ]
+        }
+    }
+}
+
+neoForge {
+    version = "26.3.0.83"
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+    }
+
+    mods {
+        criticalhits {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    implementation "me.shedaniel.cloth:cloth-config-neoforge:26.3.159"
+    compileOnly files("C:/Users/Administrator/Doubao/chats/2026-09-03/new-chat-2/mds-api-neoforge/build/libs/mds-api-neoforge-26.2-1.1.0.jar")
+}
+
+tasks.withType(Jar).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+jar {
+    exclude("com/juzipi/criticalhits/api/**")
+    exclude("assets/criticalhits/textures/item/mds_api_icon.png")
+    exclude("assets/criticalhits/textures/entity/**")
+}

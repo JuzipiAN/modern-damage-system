@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 /**
  * 现代化伤害系统Cloth Config配置类。
- * 由Configured自动生成配置界面。
+ * 配置界面由模组自带的 MdsConfigGui 提供（Cloth Config 渲染），不依赖 Configured。
  */
 @Config(name = "modern-damage-system")
 public class MdsClothConfig implements ConfigData {

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:lingering_potion",
+    "potion_contents": {
+      "potions": "criticalhits:armor_break_2"
+    }
+  },
+  "output": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "criticalhits:armor_break_2"
+      }
+    },
+    "id": "minecraft:tipped_arrow"
+  },
+  "reagent": {
+    "item": "minecraft:arrow"
+  }
+}

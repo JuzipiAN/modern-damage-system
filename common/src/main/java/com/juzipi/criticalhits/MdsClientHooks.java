@@ -111,8 +111,8 @@ public final class MdsClientHooks {
                     if (enchantCountTotal > 4) {
                         net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
                         com.mojang.blaze3d.platform.Window window = mc.getWindow();
-                        boolean isShiftDown = com.mojang.blaze3d.platform.InputConstants.isKeyDown(window, org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_SHIFT)
-                            || com.mojang.blaze3d.platform.InputConstants.isKeyDown(window, org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT);
+                        boolean isShiftDown = com.mojang.blaze3d.platform.InputConstants.isKeyDown(org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_SHIFT)
+                            || com.mojang.blaze3d.platform.InputConstants.isKeyDown(org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT);
 
                         if (!isShiftDown) {
                             java.util.List<Integer> indicesToRemove = new java.util.ArrayList<>();
@@ -698,8 +698,8 @@ public final class MdsClientHooks {
         // 检测Shift键，没按住就不显示描述
         net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
         com.mojang.blaze3d.platform.Window window = mc.getWindow();
-        boolean isShiftDown = com.mojang.blaze3d.platform.InputConstants.isKeyDown(window, org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_SHIFT)
-            || com.mojang.blaze3d.platform.InputConstants.isKeyDown(window, org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT);
+        boolean isShiftDown = com.mojang.blaze3d.platform.InputConstants.isKeyDown(org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_SHIFT)
+            || com.mojang.blaze3d.platform.InputConstants.isKeyDown(org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT);
 
         // 收集已有的Tooltip文本，用于去重
         java.util.Set<String> existingTexts = new java.util.HashSet<>();

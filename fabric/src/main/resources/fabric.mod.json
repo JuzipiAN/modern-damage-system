@@ -2,21 +2,22 @@
   "schemaVersion": 1,
   "id": "criticalhits",
   "version": "${version}",
-  "name": "现代化伤害系统",
+  "name": "现代化伤害系统丨Modern Damage System",
   "icon": {
     "128": "assets/criticalhits/icon_128.png",
     "256": "assets/criticalhits/icon_256.png",
     "512": "assets/criticalhits/icon.png"
   },
-  "description": "现代化伤害系统：把原版战斗重做成「伤害乘区」体系 —— 26 种攻击/防御附魔、4 系药水、可配置战利品、MDS 合成台与 HUD 状态提示，并移除跳劈必暴击。\n\nModern Damage System rebuilds combat around a damage-multiplier system: 26 attack/defense enchantments, 4 potion lines, configurable loot, a dedicated MDS crafting station and an on-screen HUD.\n\n必选前置 / Requires：Fabric API、Better Combat、AttributeFix、MaxHealth Fix、Cloth Config API、Configured、MDS API。\n\n⚠️ 许可证 / License：自定义源代码公开协议（Custom Source-available License, All Rights Reserved）—— 禁止未经书面授权移植、修改、分发至网易中国版我的世界。",
+  "description": "现代化伤害系统：把原版战斗重做成「伤害乘区」体系。26 种攻击与防御附魔、MDS 合成台、可配置战斗面板、40 个成就，以及敌对生物的附魔适配；移除跳劈必暴击。\\n\\nModern Damage System rebuilds combat around a damage-multiplier system: 26 attack and defense enchantments, an MDS crafting station, a configurable combat HUD, 40 achievements and enchanted hostile mobs. The jump-crit rule is gone.\\n\\nCurseForge: https://www.curseforge.com/minecraft/mc-mods/modern-damage-system\\nSource: https://github.com/JuzipiAN/modern-damage-system",
   "authors": [
     "Juzipi_AN"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/modern-damage-system",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/modern-damage-system",
     "sources": "https://github.com/JuzipiAN/modern-damage-system",
     "issues": "https://github.com/JuzipiAN/modern-damage-system/issues",
-    "email": "ngdgsls151231@outlook.com"
+    "email": "ngdgsls151231@outlook.com",
+    "source": "https://github.com/JuzipiAN/modern-damage-system"
   },
   "license": "Custom Source-available License (All Rights Reserved)",
   "environment": "*",
@@ -26,6 +27,9 @@
     ],
     "client": [
       "com.juzipi.criticalhits.CriticalHitsClient"
+    ],
+    "modmenu": [
+      "com.juzipi.criticalhits.fabric.CriticalHitsModFabricModMenu"
     ]
   },
   "mixins": [
@@ -35,14 +39,16 @@
   ],
   "depends": {
     "fabricloader": ">=0.19.3",
-    "minecraft": "~26.2",
+    "minecraft": "~26.3",
     "java": ">=25",
     "fabric-api": "*",
     "bettercombat": "*",
     "cloth-config": "*",
-    "configured": "*",
     "attributefix": "*",
     "maxhealthfix": "*",
     "mds-api": ">=1.0.0"
+  },
+  "suggests": {
+    "modmenu": "*"
   }
 }

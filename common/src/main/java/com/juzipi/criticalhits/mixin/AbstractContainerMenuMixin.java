@@ -103,7 +103,7 @@ public abstract class AbstractContainerMenuMixin {
                 return false;
             }
             case THROW:
-                player.drop(result.copy(), true);
+                player.drop(result.copy(), true, net.minecraft.util.Prediction.SERVER_ONLY);
                 return true;
             default:
                 // QUICK_CRAFT（拖拽）等其余类型：结果槽不可放置，直接吞掉点击
